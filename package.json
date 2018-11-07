@@ -1,0 +1,17 @@
+{
+  "name": "airbloc-bigchaindb-proxy",
+  "version": "1.0.0",
+  "description": "A proxy that relays BigchainDB transaction for Airbloc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bigchaindb-driver": "^4.1.0",
+    "cottage": "^3.0.2",
+    "koa": "^2.6.1",
+    "koa-body": "^4.0.4"
+  }
+}
