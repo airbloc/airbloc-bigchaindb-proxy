@@ -27,7 +27,7 @@ function postSign(intermediateTxn, signatures) {
 
     const serializedSignedTransaction = 
         driver.Transaction.serializeTransactionIntoCanonicalString(signedTx);
-    signexTx.id = sha256Hash(serializedSignedTransaction);
+    signedTx.id = sha256Hash(serializedSignedTransaction);
     return signedTx;
 }
 

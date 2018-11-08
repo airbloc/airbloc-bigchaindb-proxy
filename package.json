@@ -4,6 +4,7 @@
   "description": "A proxy that relays BigchainDB transaction for Airbloc.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

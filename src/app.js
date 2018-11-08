@@ -7,9 +7,14 @@ const BigchainDB = require('bigchaindb-driver');
 
 function postTransactions(conn) {
     return async (ctx) => {
-        const { transaction, signatures } = ctx.req.body;
+        const { transaction, signatures } = ctx.request.body;
         const signedTx = TxnLib.postSign(transaction, signatures);
-        const txReceipt = await conn.postTransactionCommit(signedTx);
+
+        try {
+            const txReceipt = await conn.postTransactionCommit(signedTx);
+        } catch (err) {
+            return new Cottage.Response(500, err);
+        }
         return txReceipt;
     };
 }
@@ -29,10 +34,11 @@ async function main() {
 
     const router = new Cottage();
     router.post('/transactions', postTransactions(conn));
+    router.get('/', () => ({'ping': 'pong'}));
 
     const app = new Koa();
     app.use(KoaBody());
-    app.use(router.handler());
+    app.use(router.callback());
 
     app.listen(config.port, () => 
         console.log(`Server listening at http://localhost:${config.port}`));
