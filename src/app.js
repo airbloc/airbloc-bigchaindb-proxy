@@ -11,11 +11,10 @@ function postTransactions(conn) {
         const signedTx = TxnLib.postSign(transaction, signatures);
 
         try {
-            const txReceipt = await conn.postTransactionCommit(signedTx);
+            return conn.postTransactionCommit(signedTx);
         } catch (err) {
             return new Cottage.Response(500, err);
         }
-        return txReceipt;
     };
 }
 

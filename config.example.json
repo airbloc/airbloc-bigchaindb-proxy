@@ -1,4 +1,4 @@
 {
-    "port": "8080",
-    "endpoint": "http://localhost:7070"
+    "port": "9983",
+    "endpoint": "http://localhost:9984"
 }
